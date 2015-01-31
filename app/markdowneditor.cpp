@@ -465,6 +465,15 @@ void MarkdownEditor::setSnippetCompleter(SnippetCompleter *completer)
             this, SLOT(insertSnippet(QString,QString, int)));
 }
 
+void MarkdownEditor::setYamlHeaderSupportEnabled(bool enabled)
+{
+    highlighter->setYamlHeaderSupportEnabled(enabled);
+
+    // rehighlight markdown document
+    highlighter->reset();
+    highlighter->rehighlight();
+}
+
 void MarkdownEditor::gotoLine(int line)
 {
     QTextCursor cursor(document()->findBlockByNumber(line-1));

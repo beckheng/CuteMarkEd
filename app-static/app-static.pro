@@ -24,8 +24,8 @@ SOURCES += \
     slidelinemapping.cpp \
     viewsynchronizer.cpp \
     revealviewsynchronizer.cpp \
-    htmlpreviewcontroller.cpp \
-    htmlviewsynchronizer.cpp
+    htmlviewsynchronizer.cpp \
+    yamlheaderchecker.cpp
 
 HEADERS += \
     snippets/snippet.h \
@@ -45,8 +45,8 @@ HEADERS += \
     slidelinemapping.h \
     viewsynchronizer.h \
     revealviewsynchronizer.h \
-    htmlpreviewcontroller.h \
-    htmlviewsynchronizer.h
+    htmlviewsynchronizer.h \
+    yamlheaderchecker.h
 
 #unix:!symbian {
 #    maemo5 {

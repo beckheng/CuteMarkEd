@@ -78,6 +78,9 @@ void MarkdownHighlighter::highlightBlock(const QString &textBlock)
         return;
     }
 
+    // TODO
+    qDebug() << textBlock;
+
     // check spelling of passed text block
     if (spellingCheckEnabled) {
         QStringList wordList = textBlock.split(QRegExp("\\W+"), QString::SkipEmptyParts);

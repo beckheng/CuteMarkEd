@@ -1109,7 +1109,12 @@ void MainWindow::setupHtmlPreview()
 
 void MainWindow::setupHtmlSourceView()
 {
+    // TODO
+#ifdef Q_OS_MAC
+    QFont font("Monospace", 12);
+#else
     QFont font("Monospace", 10);
+#endif
     font.setStyleHint(QFont::TypeWriter);
     ui->htmlSourceTextEdit->setFont(font);
     htmlHighlighter = new HtmlHighlighter(ui->htmlSourceTextEdit->document());

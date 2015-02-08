@@ -19,6 +19,8 @@
 #include <QSettings>
 #include <QWebSettings>
 
+#include <QDebug>
+
 
 static const char* MARKDOWN_CONVERTER = "general/converter";
 static const char* FONT_FAMILY_DEFAULT = "Monospace";
@@ -385,7 +387,14 @@ void Options::readSettings()
 
     // editor settings
     QString fontFamily = settings.value(FONT_FAMILY, FONT_FAMILY_DEFAULT).toString();
+
+    // TODO
+#ifdef Q_OS_MAC
+    int fontSize = settings.value(FONT_SIZE, 12).toInt();
+    qDebug() << "Mac OS " << fontSize;
+#else
     int fontSize = settings.value(FONT_SIZE, 10).toInt();
+#endif
 
     m_tabWidth = settings.value(TAB_WIDTH, 8).toInt();
 

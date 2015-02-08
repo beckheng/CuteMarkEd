@@ -37,6 +37,7 @@
 using hunspell::SpellChecker;
 
 #include <QScrollBar>
+#include <QDebug>
 
 class ScrollBarFix : public QScrollBar {
 public:
@@ -60,7 +61,13 @@ MarkdownEditor::MarkdownEditor(QWidget *parent) :
 {
     highlighter = new MarkdownHighlighter(this->document(), spellChecker);
 
+    // TODO
+#ifdef Q_OS_MAC
+    QFont font("Monospace", 12);
+#else
     QFont font("Monospace", 10);
+#endif
+
     font.setStyleHint(QFont::TypeWriter);
 
     lineNumberArea->setFont(font);
@@ -153,6 +160,8 @@ int MarkdownEditor::lineNumberAreaWidth()
     QFont font = lineNumberArea->font();
     const QFontMetrics linefmt(font);
 
+    qDebug() << "font: " << font.family() << " " << font.pointSize();
+
     int space = 10 + linefmt.width(QLatin1Char('9')) * digits;
     return space;
 }
@@ -242,6 +251,7 @@ void MarkdownEditor::updateLineNumberArea(const QRect &rect, int dy)
 
 void MarkdownEditor::editorFontChanged(const QFont &font)
 {
+    qDebug() << "editorFontChanged: " << font.family() << " " << font.pointSize();
     lineNumberArea->setFont(font);
     setFont(font);
 }

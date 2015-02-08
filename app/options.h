@@ -130,6 +130,9 @@ public:
     MarkdownConverter markdownConverter() const;
     void setMarkdownConverter(MarkdownConverter converter);
 
+    QString lastUsedStyle() const;
+    void setLastUsedStyle(const QString &style);
+
     void readSettings();
     void writeSettings();
 
@@ -162,6 +165,7 @@ private:
     bool m_yamlHeaderSupportEnabled;
     QString m_dictionaryLanguage;
     MarkdownConverter m_markdownConverter;
+    QString m_lastUsedStyle;
     QString m_standardFontFamily;
     QString m_fixedFontFamily;
     QString m_serifFontFamily;
